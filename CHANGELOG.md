@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.2.2] - 2026-06-01
+
+### Fixed
+
+- README API reference documented the simulate request body with the wrong keys — `ground.type` (the API expects `ground_type`) and `excitations[].real`/`.imag` (the API expects `voltage_real`/`voltage_imag`). Submitting the documented payload silently fell back to default ground/voltage. Corrected the example to match the API (#61)
+
+### Changed
+
+- Simulate request models now reject unknown/misspelled fields with a 422 validation error instead of silently ignoring them and using defaults (e.g. `ground: { "type": ... }` now errors clearly instead of defaulting to average ground) (#61)
+- Reorganized documentation: trimmed the README to a quick-start front page and moved the detailed usage, development, deployment, and API guides into a new `docs/` folder with an index. Refreshed the landing page with live badges (stars, Docker pulls, Pages deploy), a value-prop hook, and a prominent "Launch the live demo" button
+
 ## [1.2.1] - 2026-06-01
 
 ### Fixed
@@ -329,6 +340,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 This was the initial public release -- a complete rewrite of the original prototype into a production-quality application with React 19, TypeScript, FastAPI, and Docker.
 
+[1.2.2]: https://github.com/EA1FUO/AntennaSim/compare/v1.2.1...v1.2.2
 [1.2.1]: https://github.com/EA1FUO/AntennaSim/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/EA1FUO/AntennaSim/compare/v1.1.1...v1.2.0
 [1.0.0]: https://github.com/EA1FUO/AntennaSim/compare/v0.8.0...v1.0.0
